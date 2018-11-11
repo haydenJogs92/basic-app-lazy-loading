@@ -1,0 +1,24 @@
+<div class="contentBox">
+  <h2>Order History</h2>
+  <br>
+
+    <ul class="list-group list-group-flush" style="text-align:left;">
+      <li class="list-group-item" *ngFor="let order of userOrderHistory?.orders">
+        <div class="clickable" (click)="showOrderDetails( order.orderID )">
+          <p class="displayInline"><strong class="linkBlue">
+            <span [hidden]="!isOrderDetailsVisible( order.orderID )">+</span>
+            <span [hidden]="isOrderDetailsVisible( order.orderID )">-&nbsp;</span>
+            {{order.orderName}}
+          </strong></p>
+          <span style="float:right;display:inline;">{{order.orderDate}}</span>
+        </div>
+        <div [hidden]="isOrderDetailsVisible( order.orderID )">
+          <order-details [bIsCompletedOrder]="true" [orderDetails]="order"></order-details>
+          <p><a class="nav-link" [routerLink]="['/user/', userService.userID, 'confirmation', order.orderID]">View Confirmation</a></p>
+        </div>
+      </li>
+    </ul>
+
+
+<p><a class="nav-link" [routerLink]="['/user/', userService.userID]">Back To My Account</a></p>
+</div>

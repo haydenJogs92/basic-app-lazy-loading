@@ -1,0 +1,53 @@
+
+<div class="loginFormBox">
+  <h2>Welcome</h2>
+  <img class="logo" src="assets/angular.png" title="angular">
+  <form [formGroup]="loginForm" >
+
+      <floating-label-input
+        [parentForm]="loginForm"
+        [labelName]="'Email'"
+        [formControlNameString]="'sEmail'"
+        [inputType]="'email'"
+        [maxLength]="40"
+        ></floating-label-input>
+
+
+        <floating-label-input
+          [parentForm]="loginForm"
+          [labelName]="'Password'"
+          [formControlNameString]="'sPassword'"
+          [inputType]="'password'"
+          [maxLength]="40"
+          ></floating-label-input>
+
+      <div>
+        <button class="submitButton" *ngIf="!loginForm.valid" (click)="showFormErrors()">Sign In</button>
+        <button class="submitButton" *ngIf="loginForm.valid" (click)="loginUser()">Sign In</button>
+      </div>
+      <div *ngIf="bIsProcessingLogin" >
+        <div class="alert alert-info" role="alert">
+          Signing in...
+        </div>
+      </div>
+      <div *ngIf="bLoginSuccess">
+        <div class="alert alert-success">
+          Sign in Success!
+        </div>
+      </div>      
+      <div *ngIf="!bIsProcessingLogin && formErrors" >
+          <div class="alert alert-danger" role="alert">
+            {{formErrorMessage}}
+          </div>
+      </div>
+      <!--<div class="commonSpacing linkColor">
+        <span class="floatLeft">
+          Sign Up
+        </span>
+        <span class="floatRight">
+          Need Help?
+        </span>
+      </div>-->
+  </form>
+
+</div>

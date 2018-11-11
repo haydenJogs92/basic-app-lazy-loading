@@ -1,0 +1,24 @@
+<div class="contentBox">
+  <h2>Basic App</h2>
+  <img class="logo" src="assets/angular.png" title="angular">
+  <p>
+    This is an example app written with Angular 4.
+  </p>  
+  <p>
+    This app uses lazy loading modules.
+  </p>
+  <p>
+    This app is not connected to a backend, but you can provide these login credentials to use the app.
+  </p>
+  <p>
+    Email: {{userService.testEmail}}
+  </p>
+  <p>
+    Password: {{userService.testPassword}}
+  </p>
+  <button class="submitButton" *ngIf="userService.isUserLoggedIn()" (click)="navigateToMyAccount()">View My Account</button>
+  <button class="submitButton" *ngIf="!userService.isUserLoggedIn()"(click)="navigateToLogin()">Login Here</button>
+  <p>
+    You can contact me at: <a target="_blank" href="http://www.haydentbrown.com/contact.php">HaydenTBrown.com</a>
+  </p>
+</div>

@@ -1,0 +1,55 @@
+<form [formGroup]="updateDetailsForm" >
+
+  <floating-label-input
+    [parentForm]="updateDetailsForm"
+    [labelName]="'First Name'"
+    [formControlNameString]="'sFirstName'"
+    [inputType]="'text'"
+    [maxLength]="40"
+    ></floating-label-input>
+
+  <floating-label-input
+    [parentForm]="updateDetailsForm"
+    [labelName]="'Last Name'"
+    [formControlNameString]="'sLastName'"
+    [inputType]="'text'"
+    [maxLength]="40"
+    ></floating-label-input>
+
+  <floating-label-input
+    [parentForm]="updateDetailsForm"
+    [labelName]="'Email'"
+    [formControlNameString]="'sEmail'"
+    [inputType]="'text'"
+    [maxLength]="40"
+    ></floating-label-input>
+
+  <floating-label-input
+    [parentForm]="updateDetailsForm"
+    [labelName]="'Phone'"
+    [formControlNameString]="'sPhone'"
+    [inputType]="'tel'"
+    [maxLength]="10"
+    ></floating-label-input>
+
+    <div>
+      <button class="submitButton" *ngIf="!updateDetailsForm.valid" (click)="showFormErrors()">Update Details</button>
+      <button class="submitButton" *ngIf="updateDetailsForm.valid" (click)="updateDetails()">Update Details</button>
+    </div>
+    <div *ngIf="!bUpdatingUserInfo">
+      <div *ngIf="bFormErrors" class="commonSpacing">
+        <div class="alert alert-danger" role="alert">
+          Unable to update user info
+        </div>
+      </div>
+      <div *ngIf="bUpdateSuccess && !bFormErrors" class="alert alert-success" role="alert">
+        User info updated!
+      </div>
+    </div>
+    <div *ngIf="bUpdatingUserInfo">
+      <div class="alert alert-info" role="alert">
+        Updating user info....
+      </div>
+    </div>
+    <p><a class="nav-link" [routerLink]="['/user/', userService.userID]">Back To My Account</a></p>
+</form>

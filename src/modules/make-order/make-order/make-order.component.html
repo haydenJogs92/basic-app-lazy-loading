@@ -1,0 +1,16 @@
+<div class="contentBox">
+
+  <order-form></order-form>
+
+
+  <div *ngIf="bShowOrderSuccess">
+    <div class="alert alert-success" role="alert">
+      Order Successfully Processed!
+    </div>
+    <order-details [bIsCompletedOrder]="true" [orderDetails]="successfulOrder"></order-details>              
+  </div>
+
+
+<p><a class="nav-link" [routerLink]="['/user/', userService.userID]">Back To My Account</a></p>
+<p><a class="nav-link" [routerLink]="['/user/', userService.userID, 'order-history']">View Order History</a></p>
+</div>
