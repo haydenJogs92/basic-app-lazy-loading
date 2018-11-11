@@ -1,6 +1,6 @@
 
 
-ng build --prod --base-href="https://haydenjogs92.github.io/basic-angular-app/"
+ng build --prod --base-href="https://haydenjogs92.github.io/basic-angular-app-lazy-loading/"
 
 git add *
 
